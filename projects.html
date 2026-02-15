@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects — Amir Hossein Osooli</title>
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/android-chrome-512x512.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0b0e12; --bg-card: #121620; --bg-card-hover: #1a1f2e;
+  --text: #c8cdd8; --text-dim: #6b7280; --text-bright: #eef0f4;
+  --accent: #7fa8d4; --accent-glow: rgba(127,168,212,.18); --accent2: #a88c6e;
+  --border: rgba(127,168,212,.12); --border-subtle: rgba(255,255,255,.06);
+  --radius: 12px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-decoration: none; transition: color .25s; }
+a:hover { color: #a3c4e8; }
+body::before { content: ''; position: fixed; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: .6; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.72); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--border-subtle); transition: padding .3s, background .3s, filter .3s; }
+nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
+nav.blurred { filter: blur(8px); pointer-events: none; }
+.nav-logo-img { height: 110px; width: auto; cursor: pointer; transition: opacity .3s; display: block; }
+.nav-logo-img:hover { opacity: .8; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: .82rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); position: relative; padding-bottom: 4px; transition: color .25s; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--accent); transition: width .3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 9rem 1.5rem 4rem; transition: filter .3s; }
+.container.blurred { filter: blur(8px); pointer-events: none; }
+.page-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text-bright); margin-bottom: 3rem; }
+
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; }
+
+.project-flip-card {
+  position: relative;
+  height: 420px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.project-flip-card.flipped {
+  z-index: 200;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  height: 85vh;
+  max-height: 600px;
+}
+
+.project-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.project-flip-card.flipped .project-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.project-front, .project-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.project-back {
+  transform: rotateY(180deg);
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+}
+
+.project-card-front {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+
+.project-flip-card:not(.flipped):hover .project-card-front {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
+  border-color: var(--accent);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, rgba(127,168,212,.08), rgba(168,140,110,.08));
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s, opacity .3s;
+}
+
+.project-flip-card:not(.flipped):hover .project-image img {
+  transform: scale(1.05);
+  opacity: .85;
+}
+
+.project-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-card-hover), var(--bg-card));
+  color: var(--text-dim);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: .8rem;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-bright);
+  line-height: 1.3;
+  flex: 1;
+}
+
+.project-date {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.project-desc {
+  font-size: .85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-radius: 3px;
+  padding: .2rem .6rem;
+}
+
+.project-click-hint {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: .72rem;
+  color: var(--text-dim);
+  text-align: center;
+  opacity: .6;
+}
+
+.project-back-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.project-back-image {
+  width: 100%;
+  height: 45%;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(127,168,212,.12), rgba(168,140,110,.12));
+  position: relative;
+}
+
+.project-back-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-back-details {
+  padding: 2rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.project-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.project-back-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--text-bright);
+  line-height: 1.2;
+  flex: 1;
+}
+
+.project-back-date {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--accent);
+  background: var(--accent-glow);
+  padding: .3rem .7rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.project-back-description {
+  font-size: .95rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.project-back-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-back-tag {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: .3rem .8rem;
+}
+
+.project-back-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .82rem;
+  color: var(--accent);
+  padding: .5rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  transition: background .2s, color .2s;
+}
+
+.project-back-link:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.project-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(11,14,18,.8);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+  z-index: 10;
+}
+
+.project-close-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.project-close-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-bright);
+}
+
+.backdrop-blur {
+  position: fixed;
+  inset: 0;
+  background: rgba(11,14,18,.75);
+  backdrop-filter: blur(12px);
+  z-index: 150;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.backdrop-blur.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border-subtle); font-size: .72rem; color: var(--text-dim); margin-top: 4rem; }
+footer a { color: var(--accent2); }
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.2rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: .72rem; }
+  .container { padding: 8rem 1.2rem 3rem; }
+  .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-flip-card.flipped {
+    width: 95%;
+    height: 90vh;
+  }
+  .project-back-details {
+    padding: 1.5rem;
+  }
+  .project-back-title {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 420px) { .nav-links { gap: .6rem; } }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
+::selection { background: var(--accent-glow); color: var(--text-bright); }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" style="text-decoration: none;">
+    <img src="assets/img/logo.png" alt="A. H. Osooli" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">about</a></li>
+    <li><a href="experience.html">experience</a></li>
+    <li><a href="projects.html" class="active">projects</a></li>
+    <li><a href="publications.html">publications</a></li>
+    <li><a href="awards.html">awards</a></li>
+  </ul>
+</nav>
+
+<div class="backdrop-blur" id="backdrop"></div>
+
+<div class="container" id="mainContainer">
+  <h1 class="page-title">Projects</h1>
+  
+  <div class="projects-grid">
+    
+    <!-- Project 1: Bioprinting CFD Analysis -->
+    <div class="project-flip-card" data-project="1">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/bioprinting-front.jpg" alt="Bioprinting CFD" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Bioprinting CFD Analysis</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">Interactive Bioprinting CFD Analysis Tool</h3>
+                <span class="project-date">Spring 2025</span>
+              </div>
+              <p class="project-desc">CFD simulation tool analyzing bioink flow through printing needles for optimizing cell viability and print quality in bioprinting processes.</p>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">CFD</span>
+                <span class="project-tag">Streamlit</span>
+                <span class="project-tag">Bioengineering</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/bioprinting-back.jpg" alt="Bioprinting Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Bioprinting Analysis</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">Interactive Bioprinting CFD Analysis Tool</h2>
+                <span class="project-back-date">Spring 2025</span>
+              </div>
+              <p class="project-back-description">
+                Developed an interactive computational fluid dynamics tool to analyze bioink flow through printing needles based on the Herschel-Bulkley fluid model. The tool helps optimize bioprinting processes by calculating mass flow rate, maximum velocity, shear stress, and residence time. Provides real-time cell viability assessment to ensure optimal printing conditions for tissue engineering applications.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">Python</span>
+                <span class="project-back-tag">Streamlit</span>
+                <span class="project-back-tag">CFD</span>
+                <span class="project-back-tag">Bioengineering</span>
+                <span class="project-back-tag">Herschel-Bulkley Model</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/bioprinting-cfd-analysis-Spring-2025" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: Blind Assistance System -->
+    <div class="project-flip-card" data-project="2">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/blind-front.jpg" alt="Blind Assistance" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Blind Assistance System</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">Blind Assistance Wearable System</h3>
+                <span class="project-date">Fall 2025</span>
+              </div>
+              <p class="project-desc">AI-powered wearable system using computer vision and audio feedback to assist visually impaired individuals in navigation and object recognition.</p>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Computer Vision</span>
+                <span class="project-tag">YOLOv8</span>
+                <span class="project-tag">Assistive Tech</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/blind-back.jpg" alt="Blind Assistance Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Assistance System</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">Blind Assistance Wearable System</h2>
+                <span class="project-back-date">Fall 2025</span>
+              </div>
+              <p class="project-back-description">
+                Developed a wearable assistive device for visually impaired individuals using computer vision and audio feedback. The system integrates YOLOv8 object detection for real-time obstacle and object recognition, ultrasonic sensors for distance measurement, and audio cues for navigation guidance. Features include object identification, depth perception, and voice commands, enabling safer independent mobility.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">Python</span>
+                <span class="project-back-tag">YOLOv8</span>
+                <span class="project-back-tag">Computer Vision</span>
+                <span class="project-back-tag">Raspberry Pi</span>
+                <span class="project-back-tag">Ultrasonic Sensors</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/blind-assistance-system-Fall-2025" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: Maze Path Planning -->
+    <div class="project-flip-card" data-project="3">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/maze-front.jpg" alt="Maze Planning" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Maze Path Planning</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">Maze Path-Planning Algorithms</h3>
+                <span class="project-date">Jan 2025</span>
+              </div>
+              <p class="project-desc">Implementation and comparison of classical and heuristic path-planning algorithms including A*, Dijkstra, BFS, and DFS for maze navigation.</p>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Algorithms</span>
+                <span class="project-tag">A*</span>
+                <span class="project-tag">Graph Theory</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/maze-back.jpg" alt="Maze Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Path Planning</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">Maze Path-Planning Algorithms</h2>
+                <span class="project-back-date">Jan 2025</span>
+              </div>
+              <p class="project-back-description">
+                Comprehensive implementation of pathfinding algorithms to solve maze navigation problems. Compares performance of A*, Dijkstra, BFS, and DFS algorithms across various maze configurations. Includes visualization tools and detailed performance metrics demonstrating trade-offs between optimality, completeness, time complexity, and space complexity. Analyzes heuristic effectiveness and algorithm behavior in different maze topologies.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">Python</span>
+                <span class="project-back-tag">A* Algorithm</span>
+                <span class="project-back-tag">Dijkstra</span>
+                <span class="project-back-tag">Graph Search</span>
+                <span class="project-back-tag">Visualization</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/Maze-path-planning" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4: ROS TurtleBot Maze -->
+    <div class="project-flip-card" data-project="4">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/turtlebot-front.jpg" alt="TurtleBot" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>TurtleBot Maze</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">TurtleBot Autonomous Maze Navigation</h3>
+                <span class="project-date">Jul 2023</span>
+              </div>
+              <p class="project-desc">Autonomous navigation system for TurtleBot using ROS Noetic, implementing SLAM and sensor fusion for maze traversal.</p>
+              <div class="project-tags">
+                <span class="project-tag">ROS Noetic</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">SLAM</span>
+                <span class="project-tag">Robotics</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/turtlebot-back.jpg" alt="TurtleBot Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>TurtleBot Navigation</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">TurtleBot Autonomous Maze Navigation</h2>
+                <span class="project-back-date">Jul 2023</span>
+              </div>
+              <p class="project-back-description">
+                Developed an autonomous navigation system for TurtleBot robots in complex maze environments using ROS Noetic. Implemented SLAM (Simultaneous Localization and Mapping) techniques for real-time mapping and localization. Features sensor fusion combining LIDAR and camera data, dynamic obstacle avoidance, and path planning algorithms. The system successfully navigates unknown mazes while building accurate environmental maps.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">ROS Noetic</span>
+                <span class="project-back-tag">Python</span>
+                <span class="project-back-tag">SLAM</span>
+                <span class="project-back-tag">LIDAR</span>
+                <span class="project-back-tag">Path Planning</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/ROS-Micro-Project" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 5: ROS Foundation -->
+    <div class="project-flip-card" data-project="5">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/ros-foundation-front.jpg" alt="ROS Foundation" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>ROS Foundation</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">ROS Code Foundation Framework</h3>
+                <span class="project-date">Jul 2023</span>
+              </div>
+              <p class="project-desc">Comprehensive ROS Noetic package development covering publishers, subscribers, services, and action servers for robotic systems.</p>
+              <div class="project-tags">
+                <span class="project-tag">ROS Noetic</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Ubuntu</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/ros-foundation-back.jpg" alt="ROS Foundation Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>ROS Framework</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">ROS Code Foundation Framework</h2>
+                <span class="project-back-date">Jul 2023</span>
+              </div>
+              <p class="project-back-description">
+                Built comprehensive foundational ROS Noetic packages on Ubuntu 20.04 following The Construct Academy curriculum. Developed custom nodes for sensor data processing, implemented publish-subscribe communication patterns, created service-based robot control systems, and designed action servers for complex robot behaviors. Demonstrates deep understanding of ROS architecture, message passing, parameter servers, and distributed robotics systems.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">ROS Noetic</span>
+                <span class="project-back-tag">Python</span>
+                <span class="project-back-tag">Ubuntu 20.04</span>
+                <span class="project-back-tag">Robotics Middleware</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/Robot_Ignite_Code_Foundation_For_ROS" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 6: CFD Burgers Equation -->
+    <div class="project-flip-card" data-project="6">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/cfd-front.jpg" alt="CFD" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>CFD Simulation</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">1-D Burgers' Equation CFD Solver</h3>
+                <span class="project-date">Spring 2022</span>
+              </div>
+              <p class="project-desc">Numerical solution of Burgers' equation using Keller Box scheme with shock wave analysis and stability assessment.</p>
+              <div class="project-tags">
+                <span class="project-tag">MATLAB</span>
+                <span class="project-tag">CFD</span>
+                <span class="project-tag">Numerical Methods</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/cfd-back.jpg" alt="CFD Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>CFD Analysis</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">1-D Burgers' Equation CFD Solver</h2>
+                <span class="project-back-date">Spring 2022</span>
+              </div>
+              <p class="project-back-description">
+                Implemented the Keller Box numerical scheme to solve the one-dimensional Burgers' equation, a fundamental nonlinear PDE in fluid dynamics. Conducted detailed analysis of shock wave formation, numerical stability, and convergence properties. Compared numerical solutions with analytical results to validate accuracy. Demonstrated high computational efficiency and numerical stability across various Reynolds numbers and initial conditions.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">MATLAB</span>
+                <span class="project-back-tag">CFD</span>
+                <span class="project-back-tag">Keller Box Method</span>
+                <span class="project-back-tag">Finite Difference</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/Computational-Fluid-Dynamics-Spring-2022" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 7: Arduino Temperature Control -->
+    <div class="project-flip-card" data-project="7">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/arduino-front.jpg" alt="Arduino" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Arduino Control</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">Temperature Valve Control System</h3>
+                <span class="project-date">Spring 2022</span>
+              </div>
+              <p class="project-desc">Arduino-based temperature control system with PID controller and servo actuation, simulated in Proteus.</p>
+              <div class="project-tags">
+                <span class="project-tag">C++ (Arduino)</span>
+                <span class="project-tag">Proteus</span>
+                <span class="project-tag">Embedded</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/arduino-back.jpg" alt="Arduino Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Control System</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">Temperature Valve Control System</h2>
+                <span class="project-back-date">Spring 2022</span>
+              </div>
+              <p class="project-back-description">
+                Designed and simulated a temperature-controlled valve system using Arduino and Proteus. The system reads temperature sensor data, implements PID control logic for precise temperature regulation, and actuates a servo motor to control fluid flow. Includes complete circuit design, embedded C++ code, and comprehensive testing. Demonstrates practical application of control theory in embedded systems for industrial automation.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">C++ (Arduino)</span>
+                <span class="project-back-tag">Proteus Simulation</span>
+                <span class="project-back-tag">PID Control</span>
+                <span class="project-back-tag">Embedded Systems</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/Fundamentals-of-Electeronics-ARDUINO-Spring-2022" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 8: PANTOhealth Internship -->
+    <div class="project-flip-card" data-project="8">
+      <div class="project-flip-inner">
+        <div class="project-front">
+          <div class="project-card-front">
+            <div class="project-image">
+              <img src="assets/img/projects/internship-front.jpg" alt="Internship" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>PANTOhealth Internship</div>';" />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">PANTOhealth Sensor Analysis</h3>
+                <span class="project-date">Aug–Sep 2021</span>
+              </div>
+              <p class="project-desc">Data analysis and signal processing of pantograph sensor data for railway overhead line monitoring systems.</p>
+              <div class="project-tags">
+                <span class="project-tag">MATLAB</span>
+                <span class="project-tag">Signal Processing</span>
+                <span class="project-tag">Data Analysis</span>
+              </div>
+              <div class="project-click-hint">Click to view details →</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-back">
+          <div class="project-close-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <div class="project-back-content">
+            <div class="project-back-image">
+              <img src="assets/img/projects/internship-back.jpg" alt="Internship Detail" onerror="this.parentElement.innerHTML='<div class=\'project-image-placeholder\'>Sensor Analysis</div>';" />
+            </div>
+            <div class="project-back-details">
+              <div class="project-back-header">
+                <h2 class="project-back-title">PANTOhealth Sensor Data Analysis</h2>
+                <span class="project-back-date">Aug–Sep 2021</span>
+              </div>
+              <p class="project-back-description">
+                Conducted comprehensive data analysis and signal processing on pantograph sensor data during mechanical engineering internship at PANTOhealth in Berlin, Germany. Developed MATLAB scripts to process and analyze sensor data from railway overhead line monitoring systems. Applied digital signal processing techniques including filtering, feature extraction, and anomaly detection to assess pantograph-catenary interaction quality and predict maintenance requirements.
+              </p>
+              <div class="project-back-tags">
+                <span class="project-back-tag">MATLAB</span>
+                <span class="project-back-tag">Signal Processing</span>
+                <span class="project-back-tag">Data Analysis</span>
+                <span class="project-back-tag">Railway Systems</span>
+              </div>
+              <div class="project-back-links">
+                <a href="https://github.com/AmirHossein-osooli/Internship" target="_blank" class="project-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Amir Hossein Osooli · Built for GitHub Pages · Tehran, Iran</p>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+const mainContainer = document.getElementById('mainContainer');
+const backdrop = document.getElementById('backdrop');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+document.querySelectorAll('.project-flip-card').forEach(card => {
+  const flipInner = card.querySelector('.project-flip-inner');
+  const closeBtn = card.querySelector('.project-close-btn');
+  const frontCard = card.querySelector('.project-front');
+  
+  frontCard.addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.querySelectorAll('.project-flip-card.flipped').forEach(openCard => {
+      if (openCard !== card) {
+        openCard.classList.remove('flipped');
+      }
+    });
+    card.classList.add('flipped');
+    backdrop.classList.add('active');
+    navbar.classList.add('blurred');
+    mainContainer.classList.add('blurred');
+    document.body.style.overflow = 'hidden';
+  });
+  
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    card.classList.remove('flipped');
+    backdrop.classList.remove('active');
+    navbar.classList.remove('blurred');
+    mainContainer.classList.remove('blurred');
+    document.body.style.overflow = '';
+  });
+});
+
+backdrop.addEventListener('click', () => {
+  document.querySelectorAll('.project-flip-card.flipped').forEach(card => {
+    card.classList.remove('flipped');
+  });
+  backdrop.classList.remove('active');
+  navbar.classList.remove('blurred');
+  mainContainer.classList.remove('blurred');
+  document.body.style.overflow = '';
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.project-flip-card.flipped').forEach(card => {
+      card.classList.remove('flipped');
+    });
+    backdrop.classList.remove('active');
+    navbar.classList.remove('blurred');
+    mainContainer.classList.remove('blurred');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>
