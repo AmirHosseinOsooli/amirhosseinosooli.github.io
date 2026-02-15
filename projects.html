@@ -35,9 +35,8 @@ a { color: var(--accent); text-decoration: none; transition: color .25s; }
 a:hover { color: #a3c4e8; }
 body::before { content: ''; position: fixed; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: .6; }
 
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.72); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--border-subtle); transition: padding .3s, background .3s, filter .3s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.72); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--border-subtle); transition: padding .3s, background .3s; }
 nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
-nav.blurred { filter: blur(8px); pointer-events: none; }
 .nav-logo-img { height: 110px; width: auto; cursor: pointer; transition: opacity .3s; display: block; }
 .nav-logo-img:hover { opacity: .8; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -46,8 +45,7 @@ nav.blurred { filter: blur(8px); pointer-events: none; }
 .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 9rem 1.5rem 4rem; transition: filter .3s; }
-.container.blurred { filter: blur(8px); pointer-events: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
 .page-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text-bright); margin-bottom: 3rem; }
 
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; }
@@ -60,7 +58,7 @@ nav.blurred { filter: blur(8px); pointer-events: none; }
 }
 
 .project-flip-card.flipped {
-  z-index: 200;
+  z-index: 250;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -342,17 +340,19 @@ nav.blurred { filter: blur(8px); pointer-events: none; }
 .backdrop-blur {
   position: fixed;
   inset: 0;
-  background: rgba(11,14,18,.75);
+  background: rgba(11,14,18,.85);
   backdrop-filter: blur(12px);
   z-index: 150;
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s;
+  display: none;
 }
 
 .backdrop-blur.active {
   opacity: 1;
   pointer-events: auto;
+  display: block;
 }
 
 footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border-subtle); font-size: .72rem; color: var(--text-dim); margin-top: 4rem; }
@@ -886,21 +886,20 @@ window.addEventListener('scroll', () => {
 });
 
 document.querySelectorAll('.project-flip-card').forEach(card => {
-  const flipInner = card.querySelector('.project-flip-inner');
   const closeBtn = card.querySelector('.project-close-btn');
   const frontCard = card.querySelector('.project-front');
   
   frontCard.addEventListener('click', (e) => {
     e.stopPropagation();
+    // Close any other open cards
     document.querySelectorAll('.project-flip-card.flipped').forEach(openCard => {
       if (openCard !== card) {
         openCard.classList.remove('flipped');
       }
     });
+    // Open this card
     card.classList.add('flipped');
     backdrop.classList.add('active');
-    navbar.classList.add('blurred');
-    mainContainer.classList.add('blurred');
     document.body.style.overflow = 'hidden';
   });
   
@@ -908,8 +907,6 @@ document.querySelectorAll('.project-flip-card').forEach(card => {
     e.stopPropagation();
     card.classList.remove('flipped');
     backdrop.classList.remove('active');
-    navbar.classList.remove('blurred');
-    mainContainer.classList.remove('blurred');
     document.body.style.overflow = '';
   });
 });
@@ -919,8 +916,6 @@ backdrop.addEventListener('click', () => {
     card.classList.remove('flipped');
   });
   backdrop.classList.remove('active');
-  navbar.classList.remove('blurred');
-  mainContainer.classList.remove('blurred');
   document.body.style.overflow = '';
 });
 
@@ -930,8 +925,6 @@ document.addEventListener('keydown', (e) => {
       card.classList.remove('flipped');
     });
     backdrop.classList.remove('active');
-    navbar.classList.remove('blurred');
-    mainContainer.classList.remove('blurred');
     document.body.style.overflow = '';
   }
 });
