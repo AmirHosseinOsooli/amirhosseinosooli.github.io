@@ -184,6 +184,7 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
   display: flex;
   flex-wrap: wrap;
   gap: .4rem;
+  align-items: center;
 }
 
 .project-tag {
@@ -272,6 +273,7 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
   flex-wrap: wrap;
   gap: .5rem;
   margin-bottom: 1.5rem;
+  align-items: center;
 }
 
 .project-back-tag {
@@ -359,10 +361,20 @@ footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--b
 footer a { color: var(--accent2); }
 
 @media (max-width: 700px) {
-  nav { padding: 1rem 1.2rem; }
-  .nav-links { gap: 1rem; }
-  .nav-links a { font-size: .72rem; }
-  .container { padding: 8rem 1.2rem 3rem; }
+  nav { padding: 0.8rem 1rem; flex-wrap: nowrap; overflow-x: hidden; }
+  .nav-logo-img { height: 70px; }
+  .nav-links { 
+    gap: 1.2rem; 
+    overflow-x: auto; 
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    padding-right: 1rem;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: .7rem; white-space: nowrap; }
+  .container { padding: 7rem 1.2rem 3rem; }
   .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .project-flip-card.flipped {
     width: 95%;
@@ -443,7 +455,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Spring 2025</span>
               </div>
               <p class="project-back-description">
-                Developed an interactive computational fluid dynamics tool to analyze bioink flow through printing needles based on the Herschel-Bulkley fluid model. The tool helps optimize bioprinting processes by calculating mass flow rate, maximum velocity, shear stress, and residence time. Provides real-time cell viability assessment to ensure optimal printing conditions for tissue engineering applications.
+                Developed an interactive computational fluid dynamics tool to analyze bioink flow through printing needles based on the Herschel-Bulkley fluid model. The tool helps optimize bioprinting processes by calculating mass flow rate, maximum velocity, shear stress, and residence time. Provides real-time cell viability assessment to ensure optimal printing conditions for tissue engineering applications. <a href="https://github.com/AmirHosseinOsooli/bioprinting-cfd-analysis-Spring-2025" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">Python</span>
@@ -452,8 +464,6 @@ footer a { color: var(--accent2); }
                 <span class="project-back-tag">Bioengineering</span>
                 <span class="project-back-tag">Herschel-Bulkley Model</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/bioprinting-cfd-analysis-Spring-2025" target="_blank" class="project-back-link">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                   View on GitHub
                 </a>
@@ -502,7 +512,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Fall 2025</span>
               </div>
               <p class="project-back-description">
-                Developed a wearable assistive device for visually impaired individuals using audio feedback. The system integrates ultrasonic sensors for distance measurement, and a designed mobile application that provides audio and haptic cues for navigation guidance. Features include object detection, and voice commands, enabling safer independent mobility.
+                Developed a wearable assistive device for visually impaired individuals using audio feedback. The system integrates ultrasonic sensors for distance measurement, and a designed mobile application that provides audio and haptic cues for navigation guidance. Features include object detection, and voice commands, enabling safer independent mobility. <a href="https://github.com/AmirHosseinOsooli/blind-assistance-system-Fall-2025" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a> | <a href="https://youtube.com/your-demo-video-link" target="_blank" style="color: var(--accent); font-weight: 500;">→ App Demo Video</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">C++</span>
@@ -511,12 +521,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-tag">Ultrasonic Sensors</span>
                 <span class="project-tag">Mobile Application</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/blind-assistance-system-Fall-2025" target="_blank" class="project-back-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -561,7 +566,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Jan 2025</span>
               </div>
               <p class="project-back-description">
-                Comprehensive implementation of pathfinding algorithms to solve maze navigation problems. Compares performance of A*, Dijkstra, BFS, and DFS algorithms across various maze configurations. Includes visualization tools and detailed performance metrics demonstrating trade-offs between optimality, completeness, time complexity, and space complexity. Analyzes heuristic effectiveness and algorithm behavior in different maze topologies.
+                Comprehensive implementation of pathfinding algorithms to solve maze navigation problems. Compares performance of A*, Dijkstra, BFS, and DFS algorithms across various maze configurations. Includes visualization tools and detailed performance metrics demonstrating trade-offs between optimality, completeness, time complexity, and space complexity. Analyzes heuristic effectiveness and algorithm behavior in different maze topologies. <a href="https://github.com/AmirHossein-osooli/Maze-path-planning" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">Python</span>
@@ -570,12 +575,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-tag">Graph Search</span>
                 <span class="project-back-tag">Visualization</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/Maze-path-planning" target="_blank" class="project-back-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -620,7 +620,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Jul 2023</span>
               </div>
               <p class="project-back-description">
-                Developed an autonomous navigation system for TurtleBot robots in complex maze environments using ROS Noetic. Implemented SLAM (Simultaneous Localization and Mapping) techniques for real-time mapping and localization. Features sensor fusion combining LIDAR and camera data, dynamic obstacle avoidance, and path planning algorithms. The system successfully navigates unknown mazes while building accurate environmental maps.
+                Developed an autonomous navigation system for TurtleBot robots in complex maze environments using ROS Noetic. Implemented SLAM (Simultaneous Localization and Mapping) techniques for real-time mapping and localization. Features sensor fusion combining LIDAR and camera data, dynamic obstacle avoidance, and path planning algorithms. The system successfully navigates unknown mazes while building accurate environmental maps. <a href="https://github.com/AmirHossein-osooli/ROS-Micro-Project" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">ROS Noetic</span>
@@ -629,12 +629,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-tag">LIDAR</span>
                 <span class="project-back-tag">Path Planning</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/ROS-Micro-Project" target="_blank" class="project-back-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -678,7 +673,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Jul 2023</span>
               </div>
               <p class="project-back-description">
-                Built comprehensive foundational ROS Noetic packages on Ubuntu 20.04 following The Construct Academy curriculum. Developed custom nodes for sensor data processing, implemented publish-subscribe communication patterns, created service-based robot control systems, and designed action servers for complex robot behaviors. Demonstrates deep understanding of ROS architecture, message passing, parameter servers, and distributed robotics systems.
+                Built comprehensive foundational ROS Noetic packages on Ubuntu 20.04 following The Construct Academy curriculum. Developed custom nodes for sensor data processing, implemented publish-subscribe communication patterns, created service-based robot control systems, and designed action servers for complex robot behaviors. Demonstrates deep understanding of ROS architecture, message passing, parameter servers, and distributed robotics systems. <a href="https://github.com/AmirHossein-osooli/Robot_Ignite_Code_Foundation_For_ROS" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">ROS Noetic</span>
@@ -686,12 +681,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-tag">Ubuntu 20.04</span>
                 <span class="project-back-tag">Robotics Middleware</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/Robot_Ignite_Code_Foundation_For_ROS" target="_blank" class="project-back-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -735,19 +725,14 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Spring 2022</span>
               </div>
               <p class="project-back-description">
-                Implemented the Keller Box numerical scheme to solve the one-dimensional Burgers' equation, a fundamental nonlinear PDE in fluid dynamics. Conducted detailed analysis of shock wave formation, numerical stability, and convergence properties. Compared numerical solutions with analytical results to validate accuracy. Demonstrated high computational efficiency and numerical stability across various Reynolds numbers and initial conditions.
+                Implemented the Keller Box numerical scheme to solve the one-dimensional Burgers' equation, a fundamental nonlinear PDE in fluid dynamics. Conducted detailed analysis of shock wave formation, numerical stability, and convergence properties. Compared numerical solutions with analytical results to validate accuracy. Demonstrated high computational efficiency and numerical stability across various Reynolds numbers and initial conditions. <a href="https://github.com/AmirHossein-osooli/Computational-Fluid-Dynamics-Spring-2022" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">MATLAB</span>
                 <span class="project-back-tag">CFD</span>
                 <span class="project-back-tag">Keller Box Method</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/Computational-Fluid-Dynamics-Spring-2022" target="_blank" class="project-back-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -792,7 +777,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Spring 2022</span>
               </div>
               <p class="project-back-description">
-                Designed and simulated a temperature-controlled valve system using Arduino and Proteus. The system reads temperature sensor data, and actuates a servo motor to control fluid flow. Includes complete circuit design, embedded C++ code, and comprehensive testing. Demonstrates practical application of control theory in embedded systems for industrial automation.
+                Designed and simulated a temperature-controlled valve system using Arduino and Proteus. The system reads temperature sensor data, and actuates a servo motor to control fluid flow. Includes complete circuit design, embedded C++ code, and comprehensive testing. Demonstrates practical application of control theory in embedded systems for industrial automation. <a href="https://github.com/AmirHossein-osooli/Fundamentals-of-Electeronics-ARDUINO-Spring-2022" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">C++ (Arduino)</span>
@@ -800,12 +785,7 @@ footer a { color: var(--accent2); }
                 <span class="project-back-tag">Proteus Simulation</span>
                 <span class="project-back-tag">Embedded Systems</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/Fundamentals-of-Electeronics-ARDUINO-Spring-2022" target="_blank" class="project-back-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -849,19 +829,14 @@ footer a { color: var(--accent2); }
                 <span class="project-back-date">Aug–Sep 2021</span>
               </div>
               <p class="project-back-description">
-                Conducted comprehensive data analysis and signal processing on pantograph sensor data during mechanical engineering internship at PANTOhealth in Berlin, Germany. Developed MATLAB scripts to process and analyze sensor data from railway overhead line monitoring systems. Applied digital signal processing techniques including filtering, feature extraction, and anomaly detection to assess pantograph-catenary interaction quality and predict maintenance requirements.
+                Conducted comprehensive data analysis and signal processing on pantograph sensor data during mechanical engineering internship at PANTOhealth in Berlin, Germany. Developed MATLAB scripts to process and analyze sensor data from railway overhead line monitoring systems. Applied digital signal processing techniques including filtering, feature extraction, and anomaly detection to assess pantograph-catenary interaction quality and predict maintenance requirements. <a href="https://github.com/AmirHossein-osooli/Internship" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a>
               </p>
               <div class="project-back-tags">
                 <span class="project-back-tag">MATLAB</span>
                 <span class="project-back-tag">Signal Processing</span>
                 <span class="project-back-tag">Data Analysis</span>
               </div>
-              <div class="project-back-links">
-                <a href="https://github.com/AmirHosseinOsooli/Internship" target="_blank" class="project-back-link">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  View on GitHub
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>

@@ -37,11 +37,6 @@ body::before { content: ''; position: fixed; inset: 0; background: url("data:ima
 
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.72); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--border-subtle); transition: padding .3s, background .3s; }
 nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
-.nav-logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 300; color: var(--text-bright); letter-spacing: .02em; cursor: pointer; transition: opacity .3s; }
-.nav-logo:hover { opacity: .8; }
-.nav-logo span { color: var(--accent); font-weight: 400; }
-
-/* Logo Image */
 .nav-logo-img {
   height: 110.00px;
   width: auto;
@@ -50,7 +45,6 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
   display: block;
 }
 .nav-logo-img:hover { opacity: .8; }
-
 
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { font-size: .82rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); position: relative; padding-bottom: 4px; transition: color .25s; }
@@ -68,7 +62,7 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
 .pub-badge-year { font-family: var(--font-mono); font-size: .75rem; color: var(--text-bright); font-weight: 500; }
 .pub-content { flex: 1; }
 .pub-title { font-size: .9rem; color: var(--text-bright); font-weight: 500; margin-bottom: .3rem; line-height: 1.45; }
-.pub-meta { font-size: .78rem; color: var(--text-dim); }
+.pub-meta { font-size: .78rem; color: var(--text-dim); line-height: 1.6; }
 .pub-meta em { font-style: italic; color: var(--accent2); }
 
 .placeholder-box { margin-top: 2rem; padding: 1.6rem; border: 1px dashed var(--border-subtle); border-radius: var(--radius); text-align: center; }
@@ -78,12 +72,22 @@ footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--b
 footer a { color: var(--accent2); }
 
 @media (max-width: 700px) {
-  nav { padding: 1rem 1.2rem; }
-  .nav-links { gap: 1rem; }
-  .nav-links a { font-size: .72rem; }
-  .container { padding: 5rem 1.2rem 3rem; }
+  nav { padding: 0.8rem 1rem; flex-wrap: nowrap; overflow-x: hidden; }
+  .nav-logo-img { height: 70px; }
+  .nav-links { 
+    gap: 1.2rem; 
+    overflow-x: auto; 
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    padding-right: 1rem;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: .7rem; white-space: nowrap; }
+  .container { padding: 7rem 1.2rem 3rem; }
 }
-@media (max-width: 420px) { .nav-links { gap: .6rem; } }
+@media (max-width: 420px) { .nav-links { gap: .8rem; } }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
@@ -116,7 +120,11 @@ footer a { color: var(--accent2); }
     </div>
     <div class="pub-content">
       <div class="pub-title">Super-Resolution Generative Adversarial Network for Photothermal Optical Coherence Tomography Signal Enhancement</div>
-      <div class="pub-meta">Osooli, A. H., Salimi, M. H. &nbsp;·&nbsp; <em>10th International Conference of Biomedical Engineering (ICBME)</em>, Tabriz &nbsp;·&nbsp; Oral Presentation</div>
+      <div class="pub-meta">
+        Osooli, A. H., Salimi, M. H. · <em>10th International Conference of Biomedical Engineering (ICBME)</em>, Tabriz · Oral Presentation
+        <br><br>
+        Presentation video available at the link below: <a href="https://youtube.com/your-presentation-link" target="_blank" style="color: var(--accent); font-weight: 500;">→ Watch on YouTube</a>
+      </div>
     </div>
   </div>
 
@@ -126,7 +134,7 @@ footer a { color: var(--accent2); }
 </div>
 
 <footer>
-  <p>&copy; 2025 Amir Hossein Osooli · Built for GitHub Pages · Tehran, Iran</p>
+  <p>&copy; 2026 Amir Hossein Osooli · Built for GitHub Pages · Tehran, Iran</p>
 </footer>
 
 <script>
