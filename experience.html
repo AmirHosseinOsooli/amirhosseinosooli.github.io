@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Experience — Amir Hossein Osooli</title>
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/android-chrome-512x512.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0b0e12; --bg-card: #121620; --bg-card-hover: #1a1f2e;
+  --text: #c8cdd8; --text-dim: #6b7280; --text-bright: #eef0f4;
+  --accent: #7fa8d4; --accent-glow: rgba(127,168,212,.18); --accent2: #a88c6e;
+  --border: rgba(127,168,212,.12); --border-subtle: rgba(255,255,255,.06);
+  --radius: 12px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-decoration: none; transition: color .25s; }
+a:hover { color: #a3c4e8; }
+body::before { content: ''; position: fixed; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: .6; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.72); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--border-subtle); transition: padding .3s, background .3s; }
+nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
+.nav-logo-img { height: 110px; width: auto; cursor: pointer; transition: opacity .3s; display: block; }
+.nav-logo-img:hover { opacity: .8; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: .82rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); position: relative; padding-bottom: 4px; transition: color .25s; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--accent); transition: width .3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
+.page-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text-bright); margin-bottom: 3rem; }
+
+.timeline { position: relative; padding-left: 6.5rem; }
+.timeline-item { position: relative; margin-bottom: 2.8rem; }
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-logo-date { position: absolute; left: -6.5rem; top: 0; display: flex; flex-direction: column; align-items: center; gap: .5rem; width: 90px; }
+.timeline-logo { width: 60px; height: 60px; border-radius: 8px; overflow: hidden; background: transparent; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; }
+.timeline-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+.timeline-logo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: .65rem; color: var(--text-dim); }
+.timeline-dot { position: absolute; left: -6.4rem; top: 66px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); transition: background .3s, box-shadow .3s; margin-left: 26px; }
+.timeline-item:hover .timeline-dot { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.timeline-date { font-family: var(--font-mono); font-size: .7rem; color: var(--accent); background: var(--accent-glow); border-radius: 4px; padding: .25rem .5rem; text-align: center; }
+
+.timeline-header { display: flex; justify-content: space-between; align-items: baseline; gap: .4rem; margin-bottom: .3rem; }
+.timeline-title { font-size: .95rem; font-weight: 500; color: var(--text-bright); }
+.timeline-org { font-size: .82rem; color: var(--accent); margin-bottom: .25rem; }
+.timeline-desc { font-size: .85rem; color: var(--text-dim); line-height: 1.6; }
+
+footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border-subtle); font-size: .72rem; color: var(--text-dim); margin-top: 4rem; }
+footer a { color: var(--accent2); }
+
+@media (max-width: 700px) {
+  nav { padding: 0.8rem 1rem; flex-wrap: nowrap; overflow-x: hidden; }
+  .nav-logo-img { height: 70px; }
+  .nav-links { 
+    gap: 1.2rem; 
+    overflow-x: auto; 
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    padding-right: 1rem;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: .7rem; white-space: nowrap; }
+  .container { padding: 8rem 1.2rem 3rem; }
+  .timeline { padding-left: 0; }
+  .timeline-item:not(:last-child)::after { display: none; }
+  .timeline-logo-date { position: static; flex-direction: row; width: 100%; margin-bottom: .8rem; justify-content: flex-start; }
+  .timeline-dot { display: none; }
+}
+@media (max-width: 420px) { .nav-links { gap: .8rem; } }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
+::selection { background: var(--accent-glow); color: var(--text-bright); }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" style="text-decoration: none;">
+    <img src="assets/img/logo.png" alt="A. H. Osooli" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">about</a></li>
+    <li><a href="experience.html" class="active">experience</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="publications.html">publications</a></li>
+    <li><a href="awards.html">awards</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">Experience</h1>
+  
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-logo-date">
+        <div class="timeline-logo">
+          <img src="assets/img/experience/impact.png" alt="IMPACT Lab" onerror="this.parentElement.innerHTML='<div class=\'timeline-logo-placeholder\'>Logo</div>';" />
+        </div>
+        <div class="timeline-dot"></div>
+        <span class="timeline-date">May 2025 – Present</span>
+      </div>
+      <div class="timeline-header">
+        <span class="timeline-title">Graduate Research Assistant</span>
+      </div>
+      <div class="timeline-org">Prof. M. H. Salimi · IMPACT Lab · University of Tehran</div>
+      <div class="timeline-desc">Developing an optical-based AI-enhanced imaging system. Investigating and implementing GAN-based image-generation methods; presenting results weekly to the research group.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-logo-date">
+        <div class="timeline-logo">
+          <img src="assets/img/experience/ut.png" alt="University of Tehran" onerror="this.parentElement.innerHTML='<div class=\'timeline-logo-placeholder\'>Logo</div>';" />
+        </div>
+        <div class="timeline-dot"></div>
+        <span class="timeline-date">Jan – Aug 2025</span>
+      </div>
+      <div class="timeline-header">
+        <span class="timeline-title">M.Sc. Seminar</span>
+      </div>
+      <div class="timeline-org">Prof. M. H. Salimi, Prof. B. Vahidi · University of Tehran</div>
+      <div class="timeline-desc">Advanced optical imaging methods in histology with a focus on cancer tissues, heart, and skin. Authored a comprehensive report and delivered a defence presentation.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-logo-date">
+        <div class="timeline-logo">
+          <img src="assets/img/experience/uregina.png" alt="University of Regina" onerror="this.parentElement.innerHTML='<div class=\'timeline-logo-placeholder\'>Logo</div>';" />
+        </div>
+        <div class="timeline-dot"></div>
+        <span class="timeline-date">Dec 2023 – Apr 2024</span>
+      </div>
+      <div class="timeline-header">
+        <span class="timeline-title">Research Assistant – Rope Climbing Robot</span>
+      </div>
+      <div class="timeline-org">Prof. M. Mehrandezh, Dr. K. Ghaemi Osgouie · University of Regina, Canada</div>
+      <div class="timeline-desc">Developed a torque controller for a rope-climbing robot. Investigated relevant control methods and reported findings weekly.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-logo-date">
+        <div class="timeline-logo">
+          <img src="assets/img/experience/ut.png" alt="University of Tehran" onerror="this.parentElement.innerHTML='<div class=\'timeline-logo-placeholder\'>Logo</div>';" />
+        </div>
+        <div class="timeline-dot"></div>
+        <span class="timeline-date">Oct 2021 – Jul 2022</span>
+      </div>
+      <div class="timeline-header">
+        <span class="timeline-title">Teaching Assistant</span>
+      </div>
+      <div class="timeline-org">Dr. V. Soltani Mohammadi · Mechanical Eng., University of Tehran</div>
+      <div class="timeline-desc">TA for Calculus I, Calculus II, and Engineering Mathematics across three consecutive semesters.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-logo-date">
+        <div class="timeline-logo">
+          <img src="assets/img/experience/panto.png" alt="PANTOhealth" onerror="this.parentElement.innerHTML='<div class=\'timeline-logo-placeholder\'>Logo</div>';" />
+        </div>
+        <div class="timeline-dot"></div>
+        <span class="timeline-date">Aug – Sep 2021</span>
+      </div>
+      <div class="timeline-header">
+        <span class="timeline-title">Mechanical Engineering Intern</span>
+      </div>
+      <div class="timeline-org">PANTOhealth · Berlin, Germany</div>
+      <div class="timeline-desc">Performed data analysis and signal processing on pantograph data using MATLAB. <a href="https://github.com/AmirHossein-osooli/Internship" target="_blank" style="color: var(--accent); font-weight: 500;">→ View on GitHub</a></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Amir Hossein Osooli · Built for GitHub Pages · Tehran, Iran</p>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HPFLXDWKZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  // Check if user has consented to cookies
+  if(localStorage.getItem('cookieConsent') === 'accepted') {
+    gtag('config', 'G-HPFLXDWKZL');
+  }
+</script>
+
+<!-- Cookie Consent Banner -->
+<style>
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(18, 22, 32, 0.98);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  z-index: 10000;
+  border-top: 1px solid rgba(127, 168, 212, 0.12);
+  display: none;
+  animation: slideUp 0.4s ease;
+}
+.cookie-consent.show { display: block; }
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.cookie-content {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.cookie-text {
+  flex: 1;
+  min-width: 250px;
+  color: #c8cdd8;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.cookie-text a {
+  color: #7fa8d4;
+  text-decoration: underline;
+}
+.cookie-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+.cookie-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.cookie-accept {
+  background: #7fa8d4;
+  color: #0b0e12;
+}
+.cookie-accept:hover {
+  background: #a3c4e8;
+  transform: translateY(-1px);
+}
+.cookie-decline {
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.cookie-decline:hover {
+  color: #c8cdd8;
+  border-color: rgba(255,255,255,.12);
+}
+@media (max-width: 600px) {
+  .cookie-content { flex-direction: column; text-align: center; }
+  .cookie-buttons { width: 100%; justify-content: center; }
+}
+</style>
+
+<div class="cookie-consent" id="cookieConsent">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      This website uses cookies to analyze traffic and improve your experience. Your data is anonymous and helps me understand how visitors use the site. <a href="#privacy" onclick="alert('Privacy: We only collect anonymous analytics (page views, location, device type). No personal data is stored.'); return false;">Learn more</a>
+    </div>
+    <div class="cookie-buttons">
+      <button class="cookie-btn cookie-decline" onclick="declineCookies()">Decline</button>
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Cookie Consent Logic
+(function() {
+  const consent = localStorage.getItem('cookieConsent');
+  
+  if (!consent) {
+    // Show banner if user hasn't decided yet
+    setTimeout(() => {
+      document.getElementById('cookieConsent').classList.add('show');
+    }, 1000);
+  } else if (consent === 'accepted') {
+    // Initialize Google Analytics if already accepted
+    gtag('config', 'G-HPFLXDWKZL');
+  }
+})();
+
+function acceptCookies() {
+  localStorage.setItem('cookieConsent', 'accepted');
+  document.getElementById('cookieConsent').classList.remove('show');
+  // Initialize Google Analytics
+  gtag('config', 'G-HPFLXDWKZL');
+  console.log('Google Analytics enabled');
+}
+
+function declineCookies() {
+  localStorage.setItem('cookieConsent', 'declined');
+  document.getElementById('cookieConsent').classList.remove('show');
+  console.log('Google Analytics declined');
+}
+</script>
+
+
+</body>
+</html>
