@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Publications — Amir Hossein Osooli</title>
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/android-chrome-512x512.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0b0e12; --bg-card: #121620; --bg-card-hover: #1a1f2e;
+  --text: #c8cdd8; --text-dim: #6b7280; --text-bright: #eef0f4;
+  --accent: #7fa8d4; --accent-glow: rgba(127,168,212,.18); --accent2: #a88c6e;
+  --border: rgba(127,168,212,.12); --border-subtle: rgba(255,255,255,.06);
+  --radius: 12px;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-decoration: none; transition: color .25s; }
+a:hover { color: #a3c4e8; }
+body::before { content: ''; position: fixed; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: .6; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.72); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--border-subtle); transition: padding .3s, background .3s; }
+nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
+.nav-logo-img {
+  height: 110.00px;
+  width: auto;
+  cursor: pointer;
+  transition: opacity .3s;
+  display: block;
+}
+.nav-logo-img:hover { opacity: .8; }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: .82rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); position: relative; padding-bottom: 4px; transition: color .25s; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--accent); transition: width .3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
+.page-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--text-bright); margin-bottom: 3rem; }
+
+.pub-item { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 1.5rem 1.6rem; transition: border-color .3s; display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 1.2rem; }
+.pub-item:hover { border-color: var(--border); }
+.pub-badge { flex-shrink: 0; background: linear-gradient(135deg, var(--accent-glow), rgba(168,140,110,.12)); border: 1px solid var(--border); border-radius: 6px; padding: .4rem .7rem; text-align: center; }
+.pub-badge-type { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent2); font-weight: 500; display: block; }
+.pub-badge-year { font-family: var(--font-mono); font-size: .75rem; color: var(--text-bright); font-weight: 500; }
+.pub-content { flex: 1; }
+.pub-title { font-size: .9rem; color: var(--text-bright); font-weight: 500; margin-bottom: .3rem; line-height: 1.45; }
+.pub-meta { font-size: .78rem; color: var(--text-dim); line-height: 1.6; }
+.pub-meta em { font-style: italic; color: var(--accent2); }
+
+.placeholder-box { margin-top: 2rem; padding: 1.6rem; border: 1px dashed var(--border-subtle); border-radius: var(--radius); text-align: center; }
+.placeholder-box p { color: var(--text-dim); font-size: .82rem; }
+
+footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid var(--border-subtle); font-size: .72rem; color: var(--text-dim); margin-top: 4rem; }
+footer a { color: var(--accent2); }
+
+@media (max-width: 700px) {
+  nav { padding: 0.8rem 1rem; flex-wrap: nowrap; overflow-x: hidden; }
+  .nav-logo-img { height: 70px; }
+  .nav-links { 
+    gap: 1.2rem; 
+    overflow-x: auto; 
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    padding-right: 1rem;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: .7rem; white-space: nowrap; }
+  .container { padding: 7rem 1.2rem 3rem; }
+}
+@media (max-width: 420px) { .nav-links { gap: .8rem; } }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
+::selection { background: var(--accent-glow); color: var(--text-bright); }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" style="text-decoration: none;">
+    <img src="assets/img/logo.png" alt="A. H. Osooli" class="nav-logo-img" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">about</a></li>
+    <li><a href="experience.html">experience</a></li>
+    <li><a href="projects.html">projects</a></li>
+    <li><a href="publications.html" class="active">publications</a></li>
+    <li><a href="awards.html">achievements</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1 class="page-title">Publications</h1>
+  
+  <div class="pub-item">
+    <div class="pub-badge">
+      <span class="pub-badge-type">Conf.</span>
+      <span class="pub-badge-year">2025</span>
+    </div>
+    <div class="pub-content">
+      <div class="pub-title">Super-Resolution Generative Adversarial Network for Photothermal Optical Coherence Tomography Signal Enhancement</div>
+      <div class="pub-meta">
+        Osooli, A. H., Salimi, M. H. · <em>10th International Conference of Biomedical Engineering (ICBME)</em>, Tabriz · Oral Presentation
+        <br><br>
+        Presentation video available: <a href="https://youtu.be/7XZmAnAno1c" target="_blank" style="color: var(--accent); font-weight: 500;"> Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="placeholder-box">
+    <p>More publications coming soon — check back or follow on <a href="https://scholar.google.com" target="_blank">Google Scholar</a>.</p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Amir Hossein Osooli · Built for GitHub Pages · Tehran, Iran</p>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>

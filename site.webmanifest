@@ -1,0 +1,23 @@
+{
+  "name": "Amir Hossein Osooli",
+  "short_name": "A.H. Osooli",
+  "description": "Portfolio of Amir Hossein Osooli - Biomedical Engineering Researcher",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0e12",
+  "theme_color": "#7fa8d4",
+  "icons": [
+    {
+      "src": "assets/img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
