@@ -1,0 +1,17 @@
+# robots.txt for amirhosseinosooli.github.io
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://amirhosseinosooli.github.io/sitemap.xml
+
+# Disallow crawling of assets that don't need indexing
+Disallow: /assets/css/
+Disallow: /assets/js/
+
+# Allow all HTML pages
+Allow: /*.html$
+
+# Crawl-delay (be nice to search engines)
+Crawl-delay: 1
