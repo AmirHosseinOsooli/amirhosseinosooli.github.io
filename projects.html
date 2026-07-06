@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Research Projects - Amir Hossein Osooli | AI Medical Imaging</title>
-<meta name="description" content="Research projects by Amir Hossein Osooli: GAN for PT-OCT signal enhancement (97.9% error reduction), Photothermal Laser Speckle Imaging system, Rope climbing robot control, machine learning applications." />
-<meta name="keywords" content="GAN PT-OCT Amir Osooli, photothermal imaging, laser speckle imaging, biomedical engineering projects, AI medical imaging, rope climbing robot, Amir Hossein Osooli, AmirHossein Osooli, A.H. Osooli" />
+<meta name="description" content="Research projects by Amir Hossein Osooli: GAN for PT-OCT signal enhancement (97.9% error reduction), Photothermal Laser Speckle Rheology system, Rope climbing robot control, machine learning applications." />
+<meta name="keywords" content="GAN PT-OCT Amir Osooli, photothermal imaging, laser speckle rheology, biomedical engineering projects, AI medical imaging, rope climbing robot, Amir Hossein Osooli, AmirHossein Osooli, A.H. Osooli" />
 <meta name="author" content="Amir Hossein Osooli" />
 <meta name="robots" content="index, follow, max-snippet:-1" />
 <link rel="canonical" href="https://amirhosseinosooli.github.io/projects.html" />
@@ -14,14 +14,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://amirhosseinosooli.github.io/projects.html" />
 <meta property="og:title" content="Research Projects - Amir Hossein Osooli | AI Medical Imaging" />
-<meta property="og:description" content="Research projects by Amir Hossein Osooli: GAN for PT-OCT signal enhancement (97.9% error reduction), Photothermal Laser Speckle Imaging system, Rope climbing robot control, machine learning applications." />
+<meta property="og:description" content="Research projects by Amir Hossein Osooli: GAN for PT-OCT signal enhancement (97.9% error reduction), Photothermal Laser Speckle Rheology system, Rope climbing robot control, machine learning applications." />
 <meta property="og:site_name" content="Amir Hossein Osooli" />
 <meta property="og:image" content="https://amirhosseinosooli.github.io/assets/img/photo.JPG" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Research Projects - Amir Hossein Osooli | AI Medical Imaging" />
-<meta name="twitter:description" content="Research projects by Amir Hossein Osooli: GAN for PT-OCT signal enhancement (97.9% error reduction), Photothermal Laser Speckle Imaging system, Rope climbing robot control, machine learning applications." />
+<meta name="twitter:description" content="Research projects by Amir Hossein Osooli: GAN for PT-OCT signal enhancement (97.9% error reduction), Photothermal Laser Speckle Rheology system, Rope climbing robot control, machine learning applications." />
 <meta name="twitter:image" content="https://amirhosseinosooli.github.io/assets/img/photo.JPG" />
 <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
@@ -34,8 +34,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --bg: #0b0e12; --bg-card: #121620; --bg-card-hover: #1a1f2e;
-  --text: #c8cdd8; --text-dim: #6b7280; --text-bright: #eef0f4;
-  --accent: #7fa8d4; --accent-glow: rgba(127,168,212,.18); --accent2: #a88c6e;
+  --text: #c8cdd8; --text-dim: #9aa5b5; --text-bright: #eef0f4;
+  --accent: #7fa8d4; --accent-glow: rgba(127,168,212,.18); --accent2: #5ec4dc;
   --border: rgba(127,168,212,.12); --border-subtle: rgba(255,255,255,.06);
   --radius: 12px;
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -116,7 +116,9 @@ body.light-mode .cert-card:hover {
 body::before { content: ''; position: fixed; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: .6; }
 
 /* ── NAV ── */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.72); backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid var(--border-subtle); transition: padding .3s, background .3s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2.5rem; background: rgba(11,14,18,.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);  border-bottom: 1px solid rgba(127,168,212,.1); transition: padding .3s, background .3s; }
 nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
 .nav-logo-img { height: 110px; width: auto; cursor: pointer; transition: opacity .3s; display: block; }
 .nav-logo-img:hover { opacity: .8; }
@@ -139,8 +141,10 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
 
 /* ── CARD (stays in grid, NEVER moves) ── */
 .project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  background: rgba(18,22,32,.45);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(127,168,212,.25);
   border-radius: var(--radius);
   overflow: hidden;
   cursor: pointer;
@@ -161,7 +165,7 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
 }
 .card-image {
   width: 100%; height: 200px; overflow: hidden; position: relative;
-  background: linear-gradient(135deg, rgba(127,168,212,.08), rgba(168,140,110,.08));
+  background: linear-gradient(135deg, rgba(127,168,212,.08), rgba(94,196,220,.08));
   flex-shrink: 0;
 }
 .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
@@ -174,10 +178,10 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .7rem; gap: .5rem; }
 .card-title { font-size: 1rem; font-weight: 500; color: var(--text-bright); line-height: 1.3; flex: 1; }
 .card-date { font-family: var(--font-mono); font-size: .65rem; color: var(--text-dim); white-space: nowrap; }
-.card-desc { font-size: .84rem; color: var(--text-dim); line-height: 1.6; margin-bottom: .9rem; flex: 1; }
+.card-desc { font-size: .84rem; color: var(--text); line-height: 1.6; margin-bottom: .9rem; flex: 1; }
 .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
 .card-tag { font-family: var(--font-mono); font-size: .63rem; color: var(--accent); background: var(--accent-glow); border-radius: 3px; padding: .18rem .55rem; }
-.card-hint { margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--border-subtle); font-size: .7rem; color: var(--text-dim); text-align: center; opacity: .55; }
+.card-hint { margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--border-subtle); font-size: .7rem; color: var(--text-dim); text-align: center; opacity: .8; }
 
 /* ── BACKDROP ── */
 .backdrop {
@@ -230,7 +234,9 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
 }
 .flip-face-back {
   transform: rotateY(180deg);
-  background: var(--bg-card);
+  background: rgba(18,22,32,.45);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
   border: 1px solid var(--accent);
   box-shadow: 0 24px 80px rgba(0,0,0,.7);
   display: flex; flex-direction: column;
@@ -238,7 +244,7 @@ nav.scrolled { padding: 0.3rem 2.5rem; background: rgba(11,14,18,.88); }
 
 /* back face content */
 .flip-back-image { width: 100%; height: 240px; overflow: hidden; flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(127,168,212,.12), rgba(168,140,110,.12)); }
+  background: linear-gradient(135deg, rgba(127,168,212,.12), rgba(94,196,220,.12)); }
 .flip-back-image img { width: 100%; height: 100%; object-fit: cover; }
 .flip-back-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
 
@@ -290,30 +296,107 @@ body.light-mode {
   --bg-card: #ffffff;
   --bg-card-hover: #f1f3f5;
   --text: #2d3748;
-  --text-dim: #718096;
+  --text-dim: #52606d;
   --text-bright: #1a202c;
   --accent: #2563eb;
   --accent-glow: rgba(37,99,235,.12);
-  --accent2: #d97706;
+  --accent2: #0369a1;
   --border: rgba(37,99,235,.15);
   --border-subtle: rgba(0,0,0,.08);
 }
 body.light-mode::before { opacity: .25 !important; }
 body.light-mode nav { background: rgba(248,249,250,.85); border-bottom: 1px solid rgba(0,0,0,.08); }
 body.light-mode nav.scrolled { background: rgba(248,249,250,.95); }
+
+/* ─── LIGHT MODE FIX: glass components must switch to light glass, not stay dark ─── */
+body.light-mode .project-card {
+  background: rgba(255,255,255,.6) !important;
+  border-color: rgba(37,99,235,.15) !important;
+}
+body.light-mode .project-card:hover {
+  background: rgba(255,255,255,.78) !important;
+  box-shadow: 0 12px 40px rgba(37,99,235,.15) !important;
+}
+body.light-mode .flip-face-back {
+  background: rgba(255,255,255,.92) !important;
+  box-shadow: 0 24px 80px rgba(0,0,0,.25) !important;
+}
+body.light-mode .backdrop {
+  background: rgba(255,255,255,.6) !important;
+}
+body.light-mode .back-to-top {
+  background: rgba(255,255,255,.65) !important;
+  border-color: rgba(37,99,235,.25) !important;
+  box-shadow: 0 8px 32px 0 rgba(37,99,235,.12) !important;
+}
+body.light-mode .back-to-top:hover {
+  background: rgba(255,255,255,.85) !important;
+  border-color: rgba(37,99,235,.4) !important;
+}
 body.light-mode ::-webkit-scrollbar-track { background: #f8f9fa; }
 body.light-mode ::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
 body.light-mode ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,.25); }
+
+/* ─── BACK TO TOP BUTTON ─── */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(18,22,32,.45);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(127,168,212,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  pointer-events: none;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  transform: translateX(-50%) translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(127,168,212,.25);
+}
+
+.back-to-top:active {
+  transform: translateX(-50%) translateY(0);
+}
+
+.back-to-top svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--text-bright);
+  transition: all 0.3s ease;
+}
+
+.back-to-top:hover svg {
+  stroke: var(--accent);
+}
 
 /* ─── THEME TOGGLE BUTTON ─── */
 .theme-toggle {
   position: fixed; bottom: 2rem; right: 2rem;
   width: 50px; height: 50px; border-radius: 50%;
-  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  background: var(--bg-card); border: 1px solid rgba(127,168,212,.25);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; z-index: 1000;
   transition: all .3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 .theme-toggle:hover {
   transform: scale(1.1);
@@ -391,13 +474,13 @@ body.light-mode .theme-toggle .sun-icon { display: none; }
       </div>
       <div class="card-body">
         <div class="card-header">
-          <h3 class="card-title">Photothermal Laser Speckle Imaging System</h3>
+          <h3 class="card-title">Photothermal Laser Speckle Rheology System</h3>
           <span class="card-date">Nov 2025 – Present</span>
         </div>
-        <p class="card-desc">M.Sc. thesis developing a PT-LSI imaging system for non-invasive tissue characterization and viscoelastic property measurement.</p>
+        <p class="card-desc">M.Sc. thesis developing a PT-LSR imaging system for non-invasive tissue characterization and viscoelastic property measurement.</p>
         <div class="card-tags">
           <span class="card-tag">Optical Imaging</span>
-          <span class="card-tag">PT-LSI</span>
+          <span class="card-tag">PT-LSR</span>
           <span class="card-tag">Embedded Systems</span>
           <span class="card-tag">Python</span>
           <span class="card-tag">C++ (Arduino Nano)</span>
@@ -406,10 +489,10 @@ body.light-mode .theme-toggle .sun-icon { display: none; }
       </div>
       <template class="modal-data">
         <img src="assets/img/projects/lsi-back.jpg" alt="LSI System Detail" onerror="this.parentElement.innerHTML='<div class=\'modal-image-placeholder\'>LSI Setup</div>';" />
-        <span data-title="Photothermal Laser Speckle Imaging System"></span>
+        <span data-title="Photothermal Laser Speckle Rheology System"></span>
         <span data-date="Nov 2025 – Present"></span>
-        <span data-desc="Developing and implimenting an advanced Photothermal Laser Speckle Imaging (PT-LSI) system from scratch as part of my M.Sc. thesis at the IMPACT Lab, University of Tehran. This project combines photothermal excitation with laser speckle imaging to enable non-invasive, label-free characterization of tissue viscoelastic properties at the microscale. Applications include real-time tissue biomechanics assessment for cancer detection, wound healing monitoring, and cardiovascular diagnostics. The research aims to bridge the gap between structural and functional optical imaging, enabling molecular-specific mechanical characterization with clinical translation potential. Thesis proposal accepted January 20, 2026."></span>
-        <span data-tags="Optical Imaging,PT-LSI,Python,Tissue Characterization,Medical Imaging,C++, Arduino Nano"></span>
+        <span data-desc="Developing and implimenting an advanced Photothermal Laser Speckle Rheology (PT-LSR) imaging system from scratch as part of my M.Sc. thesis at the IMPACT Lab, University of Tehran. This project combines photothermal excitation with laser speckle imaging to enable non-invasive, label-free characterization of tissue viscoelastic properties at the microscale. Applications include real-time tissue biomechanics assessment for cancer detection, wound healing monitoring, and cardiovascular diagnostics. The research aims to bridge the gap between structural and functional optical imaging, enabling molecular-specific mechanical characterization with clinical translation potential. Thesis proposal accepted January 20, 2026."></span>
+        <span data-tags="Optical Imaging,PT-LSR,Python,Tissue Characterization,Medical Imaging,C++, Arduino Nano"></span>
       </template>
     </div>
     
@@ -664,6 +747,12 @@ body.light-mode .theme-toggle .sun-icon { display: none; }
 </div><!-- .container -->
 
 
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
 <!-- Theme Toggle Button -->
 <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
   <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -865,6 +954,26 @@ themeToggle.addEventListener('click', () => {
   setTimeout(() => {
     themeToggle.style.transform = '';
   }, 300);
+});
+
+// ═══════════════════════════════════════════════════════════
+// Back to Top Button
+// ═══════════════════════════════════════════════════════════
+const backToTopButton = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTopButton.classList.add('show');
+  } else {
+    backToTopButton.classList.remove('show');
+  }
+});
+
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 });
 </script>
 
